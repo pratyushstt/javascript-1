@@ -4,6 +4,7 @@ $(document).ready(function() {
     var dragSrcEl = null;
 
     function handleDragStart(e) {
+        $("img").attr("style", 'opacity:0.8');
         this.style.opacity = '0.4';
 
         dragSrcEl = this;
@@ -17,7 +18,6 @@ $(document).ready(function() {
         if (e.preventDefault) {
             e.preventDefault();
         }
-
         e.dataTransfer.dropEffect = 'move';
 
         return false;
@@ -43,11 +43,13 @@ $(document).ready(function() {
             this.alt = e.dataTransfer.getData('img/alt');
         }
 
+
         return false;
     }
 
     function handleDragEnd(e) {
         this.style.opacity = '1';
+        $("img").attr("style", 'opacity: 1');
 
         items.forEach(function(item) {
             item.classList.remove('over');
